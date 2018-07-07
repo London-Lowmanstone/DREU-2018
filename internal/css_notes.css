@@ -1,0 +1,52 @@
+/*
+    Use . for classes, # for IDs, and nothing for tags
+*/
+
+/* can put stuff like default font here
+html {
+  
+}
+*/
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* This will style all of the paragraphs
+p {
+    
+}
+*/
+
+/*
+#custom-id {
+    color: red;
+}
+*/
+
+/*
+.custom-class {
+    
+}
+*/
+
+/* This will only customize a span tag with the custom-class
+span.custom-class {
+    
+}
+*/
+
+#header .navbar{
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header li {
+    padding: 5px;
+    display: inline; /* inline block and block available as well; check stack overflow */
+    background-color: orange;
+}
+
+/* colors start with a hashtag */

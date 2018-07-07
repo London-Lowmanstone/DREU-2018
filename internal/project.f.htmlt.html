@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <div data-include="common_header.htmlt.html"></div>
+    </head>
+    <body id="page">
+        <h1>My Project</h1>
+        <p>Technical goal: expand on the <a href="https://worldmodels.github.io/">World Models<a> algorithm by replacing the variational autoencoder with a <a href="https://arxiv.org/abs/1710.09829">capsule network</a> to see if it creates a more comprehensible latent space.</p>
+        <p>A basic overview:</p>
+        <p>The <a href="https://arxiv.org/abs/1803.10122">World Models paper</a> describes an AI that learns to play games. Here are the steps it uses:</p>
+        <ol>
+            <li>
+                Semi-random gameplay to obtain videos of the game being played alongside the inputs to the game.
+            </li>
+            <li>
+                Encoding the image files of the game. You can think of this as the AI "zipping" the image files into a smaller size. This helps the training to go faster later on.
+            </li>
+            <li>
+                Using the encoded images and inputs to the game to create a simulator for the game.
+            </li>
+            <li>
+                Playing the game inside its own simulator, trying out different random methods of playing and combining working methods to improve its gameplay.
+            </li>
+            <li>
+                Applying the controller from the simulator to the real game to see how it did.
+            </li>
+        </ol>
+        
+        The same steps in more technical terms:
+        <ol>
+            <li>
+                Semi-random exploration of the game space to obtain training data.
+            </li>
+            <li>
+                Variational autoencoder for data compression.
+            </li>
+            <li>
+                Recurrent neural network with a mixture density output layer to predict the next frame given a sequence of previous frames and game inputs
+            </li>
+            <li>
+                Using evolutionary algorithms to train a controller via reinforcement learning. The environment is created by sampling from the distribution created by the recurrent neural network in the previous step.
+            </li>
+            <li>
+                Testing the final controller.
+            </li>
+        </ol>
+        
+        <p>If you play around with the sliders labeled "Z" on the <a href="https://worldmodels.github.io/">World Models website<a>, you can see that it's really difficult to figure out what slider does what.</p>
+        <p>This is because the computer's understanding of the game is very different from our human understanding. We tend to understand things in terms of objects, whereas computers tend to understand things in terms of numbers (or vectors and matrices).</p>
+        <p>Part of the goal of capsule networks is to get computers to understand images in terms of objects.</p>
+        <p>My hope is that by replacing the variational autoencoder with a capsule network, the AI will learn to understand the game in terms of objects, and that "Z" vector will make more sense.</p>
+    </body>
+</html>
