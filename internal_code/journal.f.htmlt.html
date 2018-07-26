@@ -7,26 +7,21 @@
         <h1>Journal</h1>
         <h2 class="journal-week">Week 1 (Started May 21)</h2>
         <p>
-        </p>
-        <p>
-            This first week was spent installing virtual machines (<a href="https://www.virtualbox.org/" target="_blank">Virtual Box</a> is my favorite), uninstalling virtual machines because I didn't like how much room they had on my computer, finding out about the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank">Windows Subsystem for Linux</a>, installing that, and then installing Argos using the Linux subsystem.
-        </p>
-        <p>
-            This first week was spent installing virtual machines (<a href="https://www.virtualbox.org/" target="_blank">Virtual Box</a> is my favorite), uninstalling virtual machines because I didn't like how much room they had on my computer, finding out about the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank">Windows Subsystem for Linux</a>, installing that, and then <a href="http://www.terriblesysadmin.com/?p=76" target="_blank">installing Argos</a> using the Linux subsystem.
+            This first week was spent installing virtual machines ([Virtual Box](https://www.virtualbox.org/) is my favorite), uninstalling virtual machines because I didn't like how much room they had on my computer, finding out about the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10), installing that, and then [installing Argos](http://www.terriblesysadmin.com/?p=76) using the Linux subsystem.
         </p>
         <h2 class="journal-week">Week 2 (May 28)</h2>
         <p>
             This was my second week on my own as both of my contacts were still at the conference, so I began to learn C++.
         </p>
         <p>
-            Usually when I learn a new language, I first learn a basic "hello world" program, and then program a simple game of rock-paper-scissors with a random (or extremely bad non-random) AI, just to make sure I know the language. This time, I decided to try to create a tic-tac-toe game instead of rock-paper-scissors, because I had most recently created <a href="https://github.com/London-Lowmanstone/CS50-Final-Project" target="_blank">a tic-tac-toe bot</a> in Python, and thought it would be cool to see if I could create something that ran faster in C++.
+            Usually when I learn a new language, I first learn a basic "hello world" program, and then program a simple game of rock-paper-scissors with a random (or extremely bad non-random) AI, just to make sure I know the language. This time, I decided to try to create a tic-tac-toe game instead of rock-paper-scissors, because I had most recently created [a tic-tac-toe bot](https://github.com/London-Lowmanstone/CS50-Final-Project) in Python, and thought it would be cool to see if I could create something that ran faster in C++.
         </p>
         <p>
             While I had learned a little C in the past year, the learning curve was high for C++. I switched from using Visual Studio back to using Atom because Visual Studio was too complicated to understand, but then eventually settled back on Visual Studio once running things in Visual Studio became easier, despite the cryptic error messages and a difficult-to-understand GUI.
         </p>
         <p>
-            My Google history from this week is filled with searches like "initial value of reference to non-const must be an lvalue" and "set array via constructor parameter C++" and <a href="https://stackoverflow.com/questions/17771406/c-initial-value-of-reference-to-non-const-must-be-an-lvalue">visiting</a> <a href="https://stackoverflow.com/questions/2732978/c-how-to-declare-a-struct-in-a-header-file">StackOverflow</a> <a href="https://stackoverflow.com/questions/20988705/is-an-include-before-ifdef-define-include-guard-okay" target="_blank">a lot</a>.<br>
-            In the end, <a href="http://www.wellho.net/mouth/2673_Multiple-Inheritance-in-C-a-complete-example.html" target="_blank">this site</a> ended up being the most helpful because it had a full working minimal example of include guards and subclasses, and helped me figure out a lot about how to structure my code.
+            My Google history from this week is filled with searches like "initial value of reference to non-const must be an lvalue" and "set array via constructor parameter C++" and [visiting](https://stackoverflow.com/questions/17771406/c-initial-value-of-reference-to-non-const-must-be-an-lvalue) [StackOverflow](https://stackoverflow.com/questions/2732978/c-how-to-declare-a-struct-in-a-header-file) [a lot](https://stackoverflow.com/questions/20988705/is-an-include-before-ifdef-define-include-guard-okay).<br>
+            In the end, [this site](http://www.wellho.net/mouth/2673_Multiple-Inheritance-in-C-a-complete-example.html) ended up being the most helpful because it had a full working minimal example of include guards and subclasses, and helped me figure out a lot about how to structure my code.
         </p>
         <p>
             I eventually did get a working tic-tac-toe game, where you could make moves on the board and determine who won, but I never implemented anything better than a completely random AI, and even that was difficult.
@@ -42,26 +37,82 @@
             This was my first week at the U of M, meeting with my mentor and the graduate student I planned to work for. I talked to John Harwell and Professor Gini quite a bit during the first few days of this week, learning more about Argos and determining different ideas for projects I could work on.
         </p>
         <p>
-            When I was talking to John about his project, <a href="https://github.com/swarm-robotics/fordyca" target="_blank">Foraging Robots Use Dynamic Caches (FORDYCA)</a>, he mentioned that one thing that would be very helpful would be able to have a script that generated configuration files for the experiments he wanted to run and then ran all of the experiments on a supercomputer. Due to my difficulty learning C++, I thought this would be a great project for me because I could implement it in Python.
+            When I was talking to John about his project, Foraging Robots Use Dynamic Caches ([FORDYCA](https://github.com/swarm-robotics/fordyca)), he mentioned that one thing that would be very helpful would be able to have a script that generated configuration files for the experiments he wanted to run and then ran all of the experiments on a supercomputer. Due to my difficulty learning C++, I thought this would be a great project for me because I could implement it in Python.
         </p>
         <p>
-            So on Wednesday (June 6th), I started working on the project. We called it <a href="https://github.com/swarm-robotics/sierra" target="_blank">Sierra, just because the name sounded nice. (Later, I would come to think of it as saving a "mountain" of work.)</a>
+            So on Wednesday (June 6th), I started working on the project. We called it [Sierra](https://github.com/swarm-robotics/sierra), just because the name sounded nice. (Later, I would come to think of it as saving a "mountain" of work.)
         </p>
         <p>
             During the course of the week, I developed a class that allows you to easily edit XML files (since that is the format of Argos's configuration files). At this point, the class needed to be able to do 4 things: Open XML files, change attributes within the XML file, remove elements from the XML file, and save the XML file.
         </p>
         <p>
-            So, I spent a lot of time reading the documentation for the <a href="https://docs.python.org/3/library/xml.etree.elementtree.html" target="_blank">ElementTree</a> built-in Python package, which has a lot of nice and easy functions for editing XML files.
+            So, I spent a lot of time reading the documentation for the [ElementTree](https://docs.python.org/3/library/xml.etree.elementtree.html) built-in Python package, which has a lot of nice and easy functions for editing XML files.
         </p>
         <p>
-            By the end of the week I had a class that was working, and was ready to try to run experiments on the supercomputer.
+            Originally, the class I built was very confusing for me to understand what called what and why, so I looked for something that would track which functions called which, and ran into this python program called [pyan](https://github.com/davidfraser/pyan).
+        </p>
+        <p>
+            By the end of this week, I had a program that could do all four of the requested tasks, which was great.
         </p>
         <h2 class="journal-week">Week 4 (June 11th)</h2>
         <p>
-            This was the week of MSI, the Minnesota Supercomputing Institute.
+            This week was spent pretty much solely working on Sierra to finally get to running on [MSI](https://www.msi.umn.edu/) (the Minnesota Supercomputing Institute).
         </p>
         <p>
-            John recommended using GNUParallel for getting the simulations to run in parallel on MSI. So, I spent a few days looking at GNUParallel and figuring out how to get it to run in Python. The solution I came up with was to use the Python <a href="https://docs.python.org/3/library/subprocess.html" target="_blank">subprocess module</a> in order to essentially run the GNUParallel commands as if I were typing them at the command line.
+            John recommended using [GNUParallel](https://www.gnu.org/software/parallel/) for getting the simulations to run in parallel on MSI. So, I spent a few days looking at GNUParallel and figuring out how to get it to run in Python. The solution I came up with was to use the Python [subprocess module](https://docs.python.org/3/library/subprocess.html) in order to essentially run the GNUParallel commands as if I were typing them at the command line.
+        </p>
+        <p>
+            Then I learned how to write job files for MSI, called [PBS scripts](https://www.msi.umn.edu/content/job-submission-and-scheduling-pbs-scripts), eventually learning how to [run things in parallel](https://www.msi.umn.edu/support/faq/how-can-i-use-gnu-parallel-run-lot-commands-parallel). I ran a few "hello world"-type scripts just to make sure that running things in parallel worked.
+        </p>
+        <p>
+            I finally was able to understand enough to [implement a class](https://github.com/swarm-robotics/sierra/blob/6d0cbcc380d52cff6af2b6912ad8075e880e822b/experiment_runner.py) which took in an Argos file and generated multiple copies of that file, replacing the random seed in each to ensure randomness. I could then run those Argos files in parallel on my personal computer (which didn't really do anything because my computer doesn't have much hardware that can run things in parallel, but hey, it ran), and I had a script set up that hypothetically could run the files on MSI as well.
+        </p>
+        <p>
+            During this week, I was also thinking about potential personal research projects. I had recently seen the World Models [paper](https://arxiv.org/abs/1803.10122) and [website](https://worldmodels.github.io/) and was extremely excited to see a general algorithm for learning how to play games just from watching someone else play. Also during my past year at school I had come across [capsule networks](https://arxiv.org/abs/1710.09829) ([tutorial](https://www.youtube.com/watch?v=pPN8d0E3900)) as a new form of neural networks, and was very interested in finding some way to use them. I had also thoroughly read through [another paper](https://www.cc.gatech.edu/~riedl/pubs/ijcai17.pdf) on a computer learning to [simulate Mario](https://www.youtube.com/watch?v=IlOwnxkDL4Q) by trying to come up with the logical rules running the engine based on seeing video of the gameplay.
+        </p>
+        <p>
+            Initially World Models seemed like a strict upgrade from the Mario engine-learner because it could learn to play games without needing a pre-built sprite map to understand the game. However, once I started playing around more with World Models, I realized that when using the World Models algorithm, the computer doesn't understand the game even remotely close to how humans do. The vector that is the computer's representation of the game (labeled the "Z" vector on [the website](https://worldmodels.github.io/)) is extremely difficult for humans to make any meaning out of, so the computer's decisions become more like a magical black box. However, in the case of the Mario engine-creator, while the exact understanding of why the algorithm decided on implementing the rules in a particular way is complicated because there are so many small decisions, the final result of the algorithm is a list of if-then rules that describe the engine. Thus, if the engine behaves incorrectly, you can explicitly see what rules caused the issue and change them by hand if need be. So, I realized I wanted something in between these two, but I wasn't quite sure yet what that was going to be.
+        </p>
+        <h2 class="journal-week">Week 5 (June 18th)</h2>
+        <p>
+            On Monday, I met with [my mentor](/about_mentor.html) to discuss potential next project ideas, since the Sierra project was wrapping up for me. I had thought a lot about it over the weekend, and I decided that there was a way I could do something both with [capsule networks](https://arxiv.org/abs/1710.09829) and the [world models algorithm](https://arxiv.org/abs/1803.10122) that would help deal with the issue of computers not understanding the game in the same way that humans do.
+        </p>
+        <p>
+            Since capsule networks seemed to be good at understanding images similar to humans, what if I used a capsule network as the autoencoder inside the world models architecture? This would hopefully allow the rest of the world models architecture to work exactly the same, with a simple component replaced that would allow its understanding of the world to be closer to our human understanding of the images. After explaining my thought process to her and proposing the project, she agreed, so I began to do research on how I could get capsule networks as autoencoders inside the world models algorithm.
+        </p>
+        <p>
+            With regards to Sierra, last week I had gotten something that worked on my personal computer, so the last thing to do was to make sure it could actually run on the supercomputer.
+        </p>
+        <p>
+            This was my first time working on a supercomputer, or any computer that wasn't mine, so when installing things didn't work, I then tried installing things with `sudo`, which also didn't work. This resulted in me getting a security email from MSI saying "you invoked the sudo command multiple times. you don't have administrative privileges in our systems. you need to desist or we'll take appropriate action". And that was how I learned that while I was using SSH to log into my own account on MSI, I didn't own the computer, and so trying `sudo` wouldn't work.
+        </p>
+        <p>
+            Eventually I learned that instead of installing particular files, I could import things from within my PBS script by using the `module load module_name` command. This seemed to almost get things up and running, but the simulation part still crashed with an error about Argos not working correctly.
+        </p>
+        <p>
+            It took some work, but I discovered that the environment with all the stuff I installed didn't transfer to the parallel part of the systems unless I included a specific line in the PBS script that did it. Once I included that line, it worked! We could start running actual simulations on MSI. (The page with the special line is [here](https://www.msi.umn.edu/support/faq/how-can-i-use-gnu-parallel-run-lot-commands-parallel).)
+        </p>
+        <p>
+            At this point, I uploaded what I had, and passed it on to John, since he would be the one creating and running the experiments as part of FORDYCA. He was very excited, and worked to get some extra functionality in so that he could quickly and easily design and run experiments.
+        </p>
+        <h2 class="journal-week">Week 6 (June 25th)</h2>
+        <p>
+            This is the first week where I took down notes of what I was doing pretty much every day, realizing that it would make it easier to write this journal in comparison to past weeks where I had to determine what I did from memory and looking at my commit history, file editing history, and emails.
+        </p>
+        <p>
+            I started off the week by downloading [the code](https://github.com/hardmaru/WorldModelsExperiments) for the world models algorithm. I had originally tried [this code](https://medium.com/applied-data-science/how-to-build-your-own-world-model-using-python-and-keras-64fb388ba459) from Medium, but realized since I was doing research it would be best to use the original code from the author. A lot of time was spent just getting the code up and running. I mostly tested to make sure I could play [the racing game](https://gym.openai.com/envs/CarRacing-v0/) myself and see the trained model play both Doom and the car racing game.
+        </p>
+        <p>
+            During this time, I also discovered what seems to be the site of the author of World Models, called [otoro](http://otoro.net/). On their site they have a blog of different projects, and it was really cool to walk back through the blog and see how they went from doing animation with [simple creatures](http://blog.otoro.net/2014/11/10/creatures-with-box2d/) to simple neural networks with [slime soccer](http://blog.otoro.net/2015/03/28/neural-slime-volleyball/) to more complex neural networks like [Mixture Density Networks](https://github.com/hardmaru/pytorch_notebooks/blob/master/mixture_density_networks.ipynb) with a program that [completes your drawing for you](https://magenta.tensorflow.org/assets/sketch_rnn_demo/index.html) to creating an AI that achieved state-of-the-art performance on a dataset with the [car racing game](https://worldmodels.github.io). (World Models is the first known program to have actually solved the racing game.)
+        </p>
+        <p>
+            After finally getting the World Models code up and running, I starting looking for implementations of Capsule Networks. An implementation in Tensorflow would be nice, but ideally I wanted something using Keras because it has a higher-level API that's much easier to use.
+        </p>
+        <p>
+            Despite there being [a lot](https://github.com/naturomics/CapsNet-Tensorflow) [of](https://github.com/ageron/handson-ml/blob/master/extra_capsnets.ipynb) [different](https://github.com/bourdakos1/capsule-networks) [implementations](https://github.com/llSourcell/capsule_networks/blob/master/capsLayer.py), most of them were built specifically for the MNIST dataset. However, after asking around online quite a bit, [Quora](https://www.quora.com/) helped me to find [an implementation](https://github.com/XifengGuo/CapsNet-Keras) by [XifengGuo](https://xifengguo.github.io/) that was both general and was written using Keras.
+        </p>
+        <p>
+            So the rest of the week was spent getting that implementation of capsule networks up and running on my computer.
         </p>
     </body>
 </html>

@@ -1,0 +1,16 @@
+Here's the regex that worked for making anchor tags open in a new window:
+Search for:
+(\<a href=\".*?\")\>
+
+Replace with:
+$1 target="_blank">
+
+To go from a file.readlines() to a string and back again do:
+"".join(file.readlines()).splitlines(True)
+
+Resources for figuring out what I was doing during a given week:
+MSI notes
+Summer Notes
+GitHub commit dates
+Folder creation dates
+AI Research paper dates
