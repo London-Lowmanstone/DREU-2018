@@ -1,3 +1,9 @@
 #page {
     background: #00FFFF;
 }
+
+code {
+    font-family: monospace;
+    /* color from stack overflow */
+    background-color: #D3D3D3
+}

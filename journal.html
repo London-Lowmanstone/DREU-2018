@@ -93,6 +93,14 @@
             Since capsule networks seemed to be good at understanding images similar to humans, what if I used a capsule network as the autoencoder inside the world models architecture? This would hopefully allow the rest of the world models architecture to work exactly the same, with a simple component replaced that would allow its understanding of the world to be closer to our human understanding of the images. After explaining my thought process to her and proposing the project, she agreed, so I began to do research on how I could get capsule networks as autoencoders inside the world models algorithm.
         </p>
         <p>
+            Since the environments for the world models algorithm seemed fairly complex, and I was hoping to train at least the initial models on my personal computer to check to see if they looked right, I decided to create my own training environment. So, I put together a little ball-dodging game that uses extremely simple graphics but generates an image for each frame. A human or an AI can play, and it can record the screenplay and play it back as a GIF.
+        </p>
+        <!-- inspired by https://www.w3schools.com/htmL/tryit.asp?filename=tryhtml_images_style and https://stackoverflow.com/questions/12320761/how-do-i-resize-an-image-while-keeping-the-aspect-ratio-in-css -->
+        <img src="game_loop.gif" style="width:200px;height:auto;">
+        <p>
+            While I was working on getting the capsule network to be able to encode these images, I was constantly updating the game to make it easier to visualize and rearranging the code's architecture so it made more sense. Since I was only interested in encoding the images at this point, the game doesn't have any game logic yet. That is, if the square does get hit by a falling ball, nothing happens; the ball goes straight through the square. However, as long as during the game, the square never gets hit, the capsule network should still learn fairly well how to encode and display images like this. Having my own simple game works as a great benchmark to make sure the algorithm is working.
+        </p>
+        <p>
             With regards to Sierra, last week I had gotten something that worked on my personal computer, so the last thing to do was to make sure it could actually run on the supercomputer.
         </p>
         <p>
@@ -118,7 +126,7 @@
             During this time, I also discovered what seems to be the site of the author of World Models, called <a href="http://otoro.net/" target="_blank">otoro</a>. On their site they have a blog of different projects, and it was really cool to walk back through the blog and see how they went from doing animation with <a href="http://blog.otoro.net/2014/11/10/creatures-with-box2d/" target="_blank">simple creatures</a> to simple neural networks with <a href="http://blog.otoro.net/2015/03/28/neural-slime-volleyball/" target="_blank">slime soccer</a> to more complex neural networks like <a href="https://github.com/hardmaru/pytorch_notebooks/blob/master/mixture_density_networks.ipynb" target="_blank">Mixture Density Networks</a> with a program that <a href="https://magenta.tensorflow.org/assets/sketch_rnn_demo/index.html" target="_blank">completes your drawing for you</a> to creating an AI that achieved state-of-the-art performance on a dataset with the <a href="https://worldmodels.github.io" target="_blank">car racing game</a>. (World Models is the first known program to have actually solved the racing game.)
         </p>
         <p>
-            After finally getting the World Models code up and running, I starting looking for implementations of Capsule Networks. An implementation in Tensorflow would be nice, but ideally I wanted something using Keras because it has a higher-level API that's much easier to use.
+            After finally getting the World Models code up and running, I starting looking for implementations of Capsule Networks. An implementation in TensorFlow would be nice, but ideally I wanted something using Keras because it has a higher-level API that's much easier to use.
         </p>
         <p>
             Despite there being <a href="https://github.com/naturomics/CapsNet-Tensorflow" target="_blank">a lot</a> <a href="https://github.com/ageron/handson-ml/blob/master/extra_capsnets.ipynb" target="_blank">of</a> <a href="https://github.com/bourdakos1/capsule-networks" target="_blank">different</a> <a href="https://github.com/llSourcell/capsule_networks/blob/master/capsLayer.py" target="_blank">implementations</a>, most of them were built specifically for the MNIST dataset. However, after asking around online quite a bit, <a href="https://www.quora.com/" target="_blank">Quora</a> helped me to find <a href="https://github.com/XifengGuo/CapsNet-Keras" target="_blank">an implementation</a> by <a href="https://xifengguo.github.io/" target="_blank">XifengGuo</a> that was both general and was written using Keras.
@@ -126,5 +134,100 @@
         <p>
             So the rest of the week was spent getting that implementation of capsule networks up and running on my computer.
         </p>
+        <h2 class="journal-week">Week 7 (July 2nd)</h2>
+        <p>
+            On Monday of this week, I learned how to use <a href="https://www.tensorflow.org/guide/summaries_and_tensorboard" target="_blank">TensorBoard</a> (the visualization system for TensorFlow) with Keras. Along the way I picked up a lot of information on how both TensorFlow and TensorBoard work.
+        </p>
+        <p>
+            After seeing that I could get a capsule up and running on MNIST, I decided to try it on my own my own dataset from the ball-dodging game.
+        </p>
+        <p>
+            To ensure that any issues were in the capsule network and encoding aspect of things, I first tested a basic feedforward network. Since I wrote my own videogame, I could collect whatever data I wanted, so I quickly put together a dataset where each image corresponded to the x-coordinate of the square on the screen. I then put together a feedforward network to try to predict the position of the square. It didn't work very well at first, and took a few iterations and questions and <a href="https://stackoverflow.com/a/50996766/5049813" target="_blank">extremely nice people</a> on StackOverflow in order to finally get something that was working. While I have done some small machine learning projects in the past, I had forgotten how important normalizing the data and setting a good learning rate were. I'm really glad I tested out the feedforward network first, because trying to debug the capsule network without learning the importance of those two processes would have been very difficult.
+        </p>
+        <p>
+            The next goal was to run a capsule network autoencoder on a pure image dataset, giving the capsule network an image and training it to give back an output that represented the image so that a feedforward network called a "decoder" could turn the representation back into an image.
+        </p>
+        <p>
+            There were quite a few bugs to fix and things to learn in order to get the architecture up and running, but I did it. I finally had a test that was working without crashing. After training for about 15 minutes, the error seemed to stop going down, and I was presented with what seemed to be a final result: a completely white image. No matter what image was put into the network, the response was a white image (with occasional random very-light-gray dots if you looked really closely using <a href="http://instant-eyedropper.com/" target="_blank">this tool</a>).
+        </p>
+        <p>
+            And that was the result of this week for my personal project. Capsule network up and running, but the only thing I was getting out of it was completely white images.
+        </p>
+        <p>
+            This week was also the week I started the main portions of this website. I discovered <a href="https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file" target="_blank">here</a> that there's no native way to import HTML files inside of other HTML files. That is, if I have a header that I want to be on every single page, I have to copy/paste that header onto every single page. And then, if I want to change the header, I have to edit the header on every single page. It looked like there were ways to do imports with JQuery or PHP, but I didn't want to add in lots of extra data to my site, and the libraries might have unintended consequences that I might not predict because I don't know them well enough. For this website, I wanted to have a more complete undestanding of everything that was happening without bringing in any external libraries that I didn't know well enough.
+        </p>
+        <p>
+            I <a href="https://stackoverflow.com/a/21096828/5049813" target="_blank">found</a> a <a href="https://github.com/LexmarkWeb/csi.js/blob/master/csi.min.js" target="_blank">single line of javascript</a> that looked like it did what I wanted. I could type <code>&ltdiv data-include="/path/to/include.html"&rt&lt/div&rt</code> and have it essentially run the HTML code specified by the <code>data-include</code> path. However, I couldn't have multiple layers of this. That is, if I did a data-include on a top level page, and the second-level page that included also had a data-include, that second data-include would not work. However, I wanted to have a header file that was on each of my pages, where each of those header files pulled in HTML from other sources, so I needed to be able to have multiple layers of imports.
+        </p>
+        <p>
+            So, I created a Python script to do it for me. Taking inspiration from the the javascript code, the script looked for files ending in <code>.htmlt.html</code>, and turned those files into normal HTML files by replacing the special <code>div</code> tags inside them with the HTML file at the path specified by the <code>data-include</code> tag, doing so recursively to add in all of the layers of imports. (The extension <code>.htmlt</code> stands for HTML Template, and the following <code>.html</code> makes it so that the file is still recognized by the system as a normal HTML file.)
+        </p>
+        <p>
+            Then, since I had the script, I could create HTML templates, such as the header I wanted to be on each page, and simply import them from other HTML pages. Since I am so used to object-oriented programming, not having something like this would have been extremely difficult for me. If I have a header that I want to be the same on each file, I don't want to have to copy/paste the header on each file; that's bad programming practice. If something changes, I have to go back and update everything, and there's a chance I might make a mistake while updating one of the pages. So, the Python script allows me to use good programming practices by letting me import HTML files, which is extremely helpful.
+        </p>
+        <h2 class="journal-week">Week 8 (July 9th)</h2>
+        <p>
+            This week I got a strong hint that what I was trying to do with capsule networks might be more difficult than I originally thought.
+        </p>
+        <p>
+            I started by scaling my dataset down to three images to see if the capsule network could represent those accurately. When I did that, I found that the output was always a blend of all of the input images. So while it learned to encode something close to the dataset, it didn't learn any of the differences between the images.
+        </p>
+        <p>
+            After talking to John about it, he gave me the classic advice of trying to reduce it to more simple cases until I got it working and then build back up from there to figure out where things went wrong. So, instead of using a capsule network, I used a normal feedforward network, the kind of network that's usually used for autoencoders. I had the exact same issue, where it would still always output a blend of all of the images in its training set. So, as per usual, I created a <a href="https://stackoverflow.com/questions/51253611/how-to-get-an-autoencoder-to-work-on-a-small-image-dataset" target="_blank">stack overflow post</a> about the issue, hoping that someone would be able to shed some insight to the issue. Alas, some helpful users tried to aid me, but no one was able to solve the issue.
+        </p>
+        <p>
+            Continuing with John's advice, the next thing I tried was building a single-layer feedforward network without any encoding. That is, the network should train to be a network that literally outputs exactly what it was given, with no bottleneck forcing it to encode. At first, this network seemed to show the exact same issues. But after training for 1400 epochs (training on all 3 images 1400 times), it finally started to show some meaningful differences between the images. I finally had a working autoencoder.
+        </p>
+        <p>
+            It took lots of experimenting and testing out different architectures, but eventually I found the issue with the larger network. It turns out I was trying to encode the data into too few dimensions. If you think of the encoder as a file "zipper", my zipped filesize was so small that it couldn't figure out how to unzip the file and get back all of the original information. As soon as I updated the feedforward encoder to use a bigger encoding size, it started to learn the differences between images, which was my first sign of hope for the capsule network working. Maybe I just needed to raise the encoding size for the capsule network, and it would begin to learn.
+        </p>
+        <p>
+            However, even with the updated encoding size, the capsule network didn't seem to work either. So, near the end of this week, I started trying to use convolutional neural networks as encoders, and saw that they worked just fine, so the next thing was to see if there was something in the architecture of the capsule network that caused it not to work.
+        </p>
+        <p>
+            With regards to the <a href="https://github.com/swarm-robotics/sierra" target="_blank">Sierra</a> project this week, I added some more functionality to the <code>XMLHelper</code> class, enabling it to change the name of tags, and also to search through elements using their <code>id</code> property instead of their tag. This allowed John to dynamically change the names of tags and if there were duplicate tags, identify them by their <code>id</code> attribute. (For example, each of the walls is given the "box" tag, but the <code>id</code> attribute of each of those tags is either "wall_north", "wall_east", "wall_south", or "wall_west", so they can each be identified and modified as desired.)
+        </p>
+        <h2 class="journal-week">Week 9 (July 16th)</h2>
+        <p>
+            At this point, I had started to be unsure if I could get the capsule networks up and running quick enough to be able to complete the project within these 10 weeks. It didn't seem likely, so, I started thinking about other ways I could encode the image into a vector so that the world models algorithm could still be used. I did come up with one method that I thought could be viable, but it looked computationally intractable and was based on logic, not machine learning.
+        </p>
+        <p>
+            So, I kept on trying to think of what I could be doing wrong or why the capsule network was not training as an autoencoder. I tried building many different combinations of convolutional neural networks and feedforward neural networks and capsule networks, testing to see if any of the ones with a capsule layer in them would work. (None of them seemed to.)
+        </p>
+        <p>
+            Then, on Wednesday, I realized that I had been training the capsule network to generate images in a different way than <a href="https://arxiv.org/abs/1710.09829" target="_blank">the original paper</a>. In the paper, they give the capsule network an image. The output of the capsule network is 10 vectors, each one representing a number. The length of each vector corresponds to its confidence in the image being that number; the longer the vector, the greater the confidence. However, when reconstructing the image, they take that single vector and use it to recreate the entire image. (The vector has 16 dimensions, which is enough to generally encode the images. To decode the vector into an image, they pass it to a feedforward neural network, called the "decoder" which then trains on the correct output image.) During my training, I was using <em>all</em> of the capsule network's outputs to try to generate the image, when I should just be using one, like in the paper.
+        </p>
+        <p>
+            The paper has another addition as well, something called "masking". To illustrate, let's say they give the capsule network an image of the number 5, and the capsule network predicts that the image is a 3. (That is, the longest output vector from the network is the one that corresponds to the number 3.) Since the real answer is 5, the authors of the paper use the output capsule corresponding to the number 5, and send that to the decoder to reconstruct the image and train. This way, the decoder always trains from the correct output capsule.
+        </p>
+        <p>
+            However, my data isn't labeled, and I don't want it to be. I want the capsule network to be able to encode the image regardless of what it is, the same way that a single capsule outputs an encoding that is used to reconstruct all of the "3"s, I want the network to be able to have a single capsule that outputs an ecoding that can be used to reconstruct all of the images in general.
+        </p>
+        <p>
+            So, I updated the network to only have one output capsule. Unfortunately, this didn't seem to work either; it still blended all the images together. This result was better than the white screen I had before, but that may only be because I changed some of the normalizing and reconstruction and activation functions so that the outputs of the network, when turned back into an image, were forced into the the <code>[0, 255]</code> range.
+        </p>
+        <p>
+            However, I had seen this blending issue before with the feedforward neural networks. The solution was to raise the encoding size and train for longer. Yet, I had some doubts that this would work, given that in the original paper, 16 dimensions seemed to be just fine to encode the images, and I had chosen the dimensions of my images (24x32) so that there were slightly <em>less</em> pixels than the <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank">MNIST</a> images (28x28) used in the paper. And, sadly, my doubts were correct. Even after letting it train for multiple hundreds of epochs, the error seemed to plateau at a level that still kept the network averaging all the images together.
+        </p>
+        <p>
+            So, the next thing to try was to test running the capsule network on the supercomputer to see if training it for longer helped any more. For the rest of the week I worked on getting the files uploaded on onto the supercomputer and trying to figure out how to run them.
+        </p>
+        <p>
+            In addition, during this week, I updated Sierra again, mainly ironing out bugs found by John when running his more complex tasks on files with configurations I hadn't tested on previously. I also updated the error message system so that the end user API gave simple and understandable error messages as to what generally went wrong, and then the messages became more verbose and specific as the user scrolled up through the entire traceback. I don't like it when error messages pop up that don't make sense, so I always try to have my error messages start off so that everyone can understand them, and then becoming more technically detailed for those who need to understand exactly why something did not work.
+        </p>
+        <h2 class="journal-week">Week 10 (July 23th)</h2>
+        <p>
+            I met with Professor Gini at the start of the week to discuss my progress with Sierra and the capsule network training and figure out how I should approach this final week. She suggested that I work on finishing my documentation (i.e. this website and my final report) this week, even though I wasn't able to get any positive results with the capsule network autoencoder.
+        </p>
+        <p>
+            So, during this week, I've been mostly focusing on this journal report and determining how to organize my paper report. MSI did recommend a particular solution for trying to run the capsule network on the supercomputer, but I have yet to determine how to modify their script to work for my project.
+        </p>
+        <p>
+            While writing this journal, I realized that it was becoming difficult to type links in HTML because anchor tags are a lot to type. I also discovered that none of my links were opening up in a new tab. So, when I went to go edit them all, I realized that once again it might be better if I followed good programming practice and made something that replaced all of the anchor tags correctly so that I could edit them all at once. Thus, I made a script so that if I use the Markup syntax of <code>[words] (link)</code> without the space between the braces and parentheses, it will replace it with the appropriate anchor tag (that opens in a new tab) in the HTML.
+        </p>
+        <p>
+            As per usual, I also addded more updates to Sierra this week. This time, I added some fairly major modifications to the CSV class. The CSV class reads in <code>.csv</code> files and creates objects that you can use to sum or average multiple <code>.csv</code> files together and then save the sum or average to a new file. This week, I made it check that the CSV that was read in by the class was a perfect rectangle. (Every row of data had to have the same amount of columns.) This was due to some errors that John was finding with adding CSVs with incompatible dimensions together. By checking to make sure that the two CSVs were perfectly rectangular, I could guarantee that all the dimensions were compatible just by checking the height and width of the rectangular CSVs. I also updated the error messages to be more readable.
+        </p>
+        <!-- TODO add in image and video footage of Sierra -->
     </body>
 </html>
