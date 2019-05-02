@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 '''
 The goal of this file is to make it so I can import HTML files inside HTML files.
-It bothered be from a coding perspective to have to copy/paste HTML,
+It bothered me from a coding perspective to have to copy/paste HTML,
 ...and have to remember all the references in case I wanted to change something.
 So, this is a solution that allows me to generate HTML files from HTML files that import other HTML files.
 '''
